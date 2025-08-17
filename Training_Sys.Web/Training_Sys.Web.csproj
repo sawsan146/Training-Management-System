@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Repository\TrainingSys.Repository.csproj" />
+    <ProjectReference Include="..\Training_Sys.Infrastructure\Training_Sys.Infrastructure.csproj" />
   </ItemGroup>
+
 
 </Project>

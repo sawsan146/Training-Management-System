@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Training_Sys.Infrastructure.Data;
+
 namespace Training_Sys.Web
 {
     public class Program
@@ -8,6 +11,12 @@ namespace Training_Sys.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(
+
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+                 sqlOptions => sqlOptions.MigrationsAssembly("Training_Sys.Infrastructure")));             
+
 
             var app = builder.Build();
 

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36105.17 d17.14
+VisualStudioVersion = 17.14.36105.17
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingSys.Repository", "Repository\TrainingSys.Repository.csproj", "{01114223-0B53-4D9C-A5D0-BA968ED635B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingSys.Core", "Repository\TrainingSys.Core.csproj", "{01114223-0B53-4D9C-A5D0-BA968ED635B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training_Sys.Web", "Training_Sys.Web\Training_Sys.Web.csproj", "{A8C3AF79-6888-4703-AF80-EBE8BB6411CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training_Sys.Infrastructure", "Training_Sys.Infrastructure\Training_Sys.Infrastructure.csproj", "{DF57D10A-67D2-4CB7-B12E-2BE475EA37BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{A8C3AF79-6888-4703-AF80-EBE8BB6411CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8C3AF79-6888-4703-AF80-EBE8BB6411CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C3AF79-6888-4703-AF80-EBE8BB6411CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF57D10A-67D2-4CB7-B12E-2BE475EA37BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF57D10A-67D2-4CB7-B12E-2BE475EA37BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF57D10A-67D2-4CB7-B12E-2BE475EA37BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF57D10A-67D2-4CB7-B12E-2BE475EA37BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{01114223-0B53-4D9C-A5D0-BA968ED635B3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{A8C3AF79-6888-4703-AF80-EBE8BB6411CE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{DF57D10A-67D2-4CB7-B12E-2BE475EA37BA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34823D92-D2A2-4CE6-94F3-13BA2354C32E}
