@@ -42,7 +42,7 @@ namespace Training_Sys.Infrastructure.Repository
 
             foreach (var include in includes)
             {
-                query.Include(include);
+                query=query.Include(include);
             }
             return query.ToList();
         }
@@ -59,7 +59,7 @@ namespace Training_Sys.Infrastructure.Repository
 
             foreach (var include in includes)
             {
-                query.Include(include);
+                query = query.Include(include);
             }
 
             var entity= await query.FirstOrDefaultAsync(x=>EF.Property<int>(x,"Id")==id);

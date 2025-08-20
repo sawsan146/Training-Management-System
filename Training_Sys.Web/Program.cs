@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Training_Sys.Infrastructure.Data;
+using Training_Sys.Infrastructure.Repository;
+using TrainingSys.Core.Interface;
 
 namespace Training_Sys.Web
 {
@@ -15,7 +17,11 @@ namespace Training_Sys.Web
             builder.Services.AddDbContext<ApplicationDbContext>(
 
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-                 sqlOptions => sqlOptions.MigrationsAssembly("Training_Sys.Infrastructure")));             
+                 sqlOptions => sqlOptions.MigrationsAssembly("Training_Sys.Infrastructure")));
+
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 
             var app = builder.Build();

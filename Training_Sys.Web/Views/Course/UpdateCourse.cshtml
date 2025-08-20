@@ -1,0 +1,116 @@
+﻿@model UpdateCourseVM
+
+@{
+    ViewData["Title"] = "Update Course";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Update Course</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddCourse" class="needs-validation" novalidate>
+                        @* <div asp-validation-summary="All" class="alert alert-danger"></div> *@
+                        @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+                        {
+                            <div asp-validation-summary="All" class="alert alert-danger"></div>
+                        }
+
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label fw-bold">Course Name</label>
+                            <input asp-for="Name" class="form-control form-control-lg" placeholder="Enter course name" required />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                            <div class="invalid-feedback">
+                                Please provide a course name.
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Category" class="form-label fw-bold">Category</label>
+                            <input asp-for="Category" class="form-control form-control-lg" placeholder="Enter course category" required />
+                            <span asp-validation-for="Category" class="text-danger small"></span>
+                            <div class="invalid-feedback">
+                                Please provide a category.
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="InstructorId" class="form-label fw-bold">Instructor</label>
+                            <select asp-for="InstructorId" asp-items="@ViewBag.Instructors" class="form-select form-select-lg">
+                                <option value="">-- Select Instructor --</option>
+                            </select>
+                            <span asp-validation-for="InstructorId" class="text-danger small"></span>
+                            <div class="invalid-feedback">
+                                Please select an instructor.
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-2"></i>Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus-circle me-2"></i>Create Course
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Enhanced validation feedback
+        (function () {
+            'use strict'
+
+            var forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+
+    <style>
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            border-bottom: none;
+        }
+
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 12px 15px;
+        }
+
+        .btn {
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+
+        .invalid-feedback {
+            font-size: 0.85rem;
+        }
+    </style>
+}

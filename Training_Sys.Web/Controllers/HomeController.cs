@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Training_Sys.Web.Models;
+using Training_Sys.Web.ViewModels;
 
 namespace Training_Sys.Web.Controllers
 {
