@@ -86,12 +86,26 @@ namespace Training_Sys.Web.Controllers
             return View(courseVM);
         }
 
-        public async Task<IActionResult> UpdateCourse()
+        public async Task<IActionResult> UpdateCourse(int id)
         {
-            var users = await _userRepository.GetAllInstructorsAsync();
+            var course= await _courseRepository.GetByIdAsync(id);
+            if (course != null)
+            {
+                var users = await _userRepository.GetAllInstructorsAsync();
 
-            ViewBag.Instructors = new SelectList(users, "Id", "Name");
-            return View();
+                ViewBag.Instructors = new SelectList(users, "Id", "Name");
+
+                var courseVM = new UpdateCourseVM
+                {
+                    Name = course.Name,
+                    Category = course.Category,
+                    InstructorId = course.InstructorID
+
+                };
+
+                return View(courseVM);
+            }
+            return NotFound();
         }
         [HttpPost]
         public async Task<IActionResult> UpdateCourse(UpdateCourseVM courseVM)

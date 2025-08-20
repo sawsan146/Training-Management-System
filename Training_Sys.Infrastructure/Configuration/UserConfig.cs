@@ -4,6 +4,7 @@ using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using TrainingSys.Core.Entities;
@@ -17,6 +18,7 @@ namespace Training_Sys.Infrastructure.Configuration
             builder.Property(u => u.Name).IsRequired().HasMaxLength(50);
             builder.Property(u => u.Email).IsRequired();
             builder.Property(u => u.Role).IsRequired();
+
         }
     }
 }

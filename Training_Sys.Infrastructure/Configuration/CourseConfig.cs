@@ -18,9 +18,9 @@ namespace Training_Sys.Infrastructure.Configuration
             builder.Property(c => c.Category).IsRequired();
 
             builder.HasOne(c => c.Instructor)
-             .WithMany() 
-             .HasForeignKey(c => c.InstructorID)
-             .OnDelete(DeleteBehavior.Restrict); 
+         .WithMany(u => u.Courses) 
+         .HasForeignKey(c => c.InstructorID)
+         .OnDelete(DeleteBehavior.Restrict);
 
         }
 
