@@ -72,5 +72,10 @@ namespace Training_Sys.Infrastructure.Repository
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+        public async Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().Where(predicate).ToListAsync();
+        }
+
     }
 }

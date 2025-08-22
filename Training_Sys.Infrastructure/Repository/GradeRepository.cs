@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Training_Sys.Infrastructure.Data;
@@ -17,5 +19,6 @@ namespace Training_Sys.Infrastructure.Repository
         {
             _context = context;
         }
+      
     }
 }

@@ -21,6 +21,8 @@ namespace TrainingSys.Core.Interface
         Task DeleteByIdAsync(int id);
 
         Task UpdateAsync(T entity);
+        Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate);
+
 
     }
 }

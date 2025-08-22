@@ -22,7 +22,5 @@ namespace TrainingSys.Core.Entities
         public Session Session { get; set; }
 
 
-
-
     }
 }

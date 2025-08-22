@@ -1,8 +1,258 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿  <style>
+        :root {
+        --primary-color: #1a237e;
+        --secondary-color: #1a237e;
+            --accent-color: #ff4081;
+            --light-bg: #f8f9fa;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+   
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+     
+
+        .dashboard-card {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            overflow: hidden;
+        }
+
+            .dashboard-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-icon {
+            font-size: 2.5rem;
+            opacity: 0.8;
+        }
+
+        .stats-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .card-course {
+            border-bottom: 4px solid #4caf50;
+        }
+
+        .card-user {
+            border-bottom: 4px solid #2196f3;
+        }
+
+        .card-session {
+            border-bottom: 4px solid #ff9800;
+        }
+
+        .card-grade {
+            border-bottom: 4px solid #f44336;
+        }
+
+        .quick-actions {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .action-btn {
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            background: var(--light-bg);
+            border: 1px solid #e0e0e0;
+        }
+
+            .action-btn:hover {
+                background: var(--secondary-color);
+                color: white;
+                transform: translateY(-3px);
+            }
+
+            .action-btn i {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+        .recent-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .recent-item {
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+<div class="bg-light">
+  
+    <!-- Main content -->
+    <div role="main" class="container py-4">
+        <div class="welcome-header">
+            <h1 class="display-5 fw-bold">Welcome to Training System</h1>
+            <p class="lead">Manage your courses, users, sessions, and grades in one place</p>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="dashboard-card card card-course h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-subtitle mb-2 text-muted">Courses</h6>
+                                <h2 class="stats-number text-success">@ViewBag.CoursesCount</h2>
+                            </div>
+                            <div class="card-icon text-success">
+                                <i class="bi bi-book"></i>
+                            </div>
+                        </div>
+                        <p class="card-text mt-3">Total courses in the system</p>
+                        <a asp-controller="Course" asp-action="Index" class="btn btn-sm btn-outline-success">View Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="dashboard-card card card-user h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-subtitle mb-2 text-muted">Users</h6>
+                                <h2 class="stats-number text-primary">@ViewBag.UsersCount</h2>
+                            </div>
+                            <div class="card-icon text-primary">
+                                <i class="bi bi-people"></i>
+                            </div>
+                        </div>
+                        <p class="card-text mt-3">Total users in the system</p>
+                        <a asp-controller="User" asp-action="Index" class="btn btn-sm btn-outline-primary">View Users</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="dashboard-card card card-session h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-subtitle mb-2 text-muted">Sessions</h6>
+                                <h2 class="stats-number text-warning">@ViewBag.SessionsCount</h2>
+                            </div>
+                            <div class="card-icon text-warning">
+                                <i class="bi bi-calendar-event"></i>
+                            </div>
+                        </div>
+                        <p class="card-text mt-3">Total sessions scheduled</p>
+                        <a asp-controller="Session" asp-action="Index" class="btn btn-sm btn-outline-warning">View Sessions</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="dashboard-card card card-grade h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-subtitle mb-2 text-muted">Grades</h6>
+                                <h2 class="stats-number text-danger">@ViewBag.GradesCount</h2>
+                            </div>
+                            <div class="card-icon text-danger">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                        <p class="card-text mt-3">Total grades recorded</p>
+                        <a asp-controller="Grade" asp-action="Index" class="btn btn-sm btn-outline-danger">View Grades</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Quick Actions -->
+            <div class="col-lg-6">
+                <div class="quick-actions">
+                    <h4 class="mb-4">Quick Actions</h4>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <a asp-controller="Course" asp-action="AddCourse" class="action-btn text-decoration-none text-dark d-block">
+                                <i class="bi bi-plus-circle"></i>
+                                <h6>Add Course</h6>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a asp-controller="User" asp-action="AddUser" class="action-btn text-decoration-none text-dark d-block">
+                                <i class="bi bi-person-plus"></i>
+                                <h6>Add User</h6>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a asp-controller="Session" asp-action="Add" class="action-btn text-decoration-none text-dark d-block">
+                                <i class="bi bi-calendar-plus"></i>
+                                <h6>Schedule Session</h6>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a asp-controller="Grade" asp-action="Add" class="action-btn text-decoration-none text-dark d-block">
+                                <i class="bi bi-clipboard-plus"></i>
+                                <h6>Add Grade</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="col-lg-6">
+                <div class="recent-section">
+                    <h4 class="mb-4">Recent Activity</h4>
+
+                    <div class="recent-item">
+                        <h6>New course added</h6>
+                        <p class="text-muted mb-0">Introduction to Programming</p>
+                        <small class="text-muted">2 hours ago</small>
+                    </div>
+
+                    <div class="recent-item">
+                        <h6>User registered</h6>
+                        <p class="text-muted mb-0">Ahmed Mohamed</p>
+                        <small class="text-muted">5 hours ago</small>
+                    </div>
+
+                    <div class="recent-item">
+                        <h6>Session scheduled</h6>
+                        <p class="text-muted mb-0">Mathematics - Lecture 5</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+
+                    <div class="recent-item">
+                        <h6>Grades updated</h6>
+                        <p class="text-muted mb-0">Midterm exam results</p>
+                        <small class="text-muted">2 days ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </div>

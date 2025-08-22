@@ -1,0 +1,15 @@
+﻿@model Training_Sys.Web.ViewModels.Grade.GradeVM
+
+<h2>Delete Grade</h2>
+<h4>Are you sure you want to delete this grade?</h4>
+<div>
+    <p><b>Trainee:</b> @Model.TraineeName</p>
+    <p><b>Session:</b> @Model.SessionInfo</p>
+    <p><b>Value:</b> @Model.Value</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

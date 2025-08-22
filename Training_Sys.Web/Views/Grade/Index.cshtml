@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Training_Sys.Web.ViewModels.Grade.GradeVM>
+
+<h2>Grades</h2>
+<a asp-action="Add" class="btn btn-primary">Add New Grade</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Trainee</th>
+            <th>Session</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var g in Model)
+        {
+            <tr>
+                <td>@g.TraineeName</td>
+                <td>@g.SessionInfo</td>
+                <td>@g.Value</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@g.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@g.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
