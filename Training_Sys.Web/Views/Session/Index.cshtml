@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SessionVM>
+
+<h2>Sessions</h2>
+<a asp-action="Add" class="btn btn-primary">Add New Session</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.StartDate.ToShortDateString()</td>
+                <td>@s.EndDate.ToShortDateString()</td>
+                <td>@s.CourseName</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@s.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

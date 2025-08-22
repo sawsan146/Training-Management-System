@@ -1,0 +1,15 @@
+﻿@model SessionVM
+
+<h2>Delete Session</h2>
+<h4>Are you sure you want to delete this session?</h4>
+<div>
+    <p><b>Course:</b> @Model.CourseName</p>
+    <p><b>Start Date:</b> @Model.StartDate.ToShortDateString()</p>
+    <p><b>End Date:</b> @Model.EndDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -21,6 +21,8 @@ namespace Training_Sys.Web
 
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+            builder.Services.AddScoped<IGradeRepository, GradeRepository>();
 
 
 
